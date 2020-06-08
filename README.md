@@ -94,11 +94,14 @@ Then (re)install latest version of OpenSSL with Homebrew:
 brew install openssl
 ```
 
+Install Boost:
+```
+brew install boost
+```
 
-Install Boost v1.60, since seiscomp3 is incompatible with Boost versions > 1.60
-```
-brew install boost@1.60
-```
+You can also use Boost@1.60 (as we did previously due to compilation issues that are now
+solved), but then you have to adapt the FindBoost.cmake file in Modules to find boost@1.60
+for the MACOSX case.
 
 ### Install Qt5 for the GUI
 
@@ -118,15 +121,30 @@ brew tap-pin cartr/qt4
 brew install qt@4
 ```
 
-### Install MySQL 5.7 (instead of current MySQL 8)
-The latest Homebrew version installs MySQL8 by default, which seems to have some
-upgrade issues with Seiscomp3 InnoDB (but this has been fixed recently).
-
-Just install MySQL 5.7 instead:
+### Install MySQL
+The latest Homebrew version installs MySQL8 by default, which used to have some
+upgrade issues with Seiscomp3 InnoDB, but this has been fixed recently. You can also use
+mysql@5.7, that should also work fine.
 
 ```
-brew install mysql@5.7
+brew install mysql
 ```
+
+Note: for compilation with MySQL 8, you might need the following line in the file 
+usr/local/Cellar/mysql/8.[VERSION]/include/mysql/mysql_com.h:
+
+```
+#include <mysql/udf_registration_types.h>
+```
+
+to
+
+```
+#include "mysql/udf_registration_types.h"
+```
+
+since otherwise you get compilation issues "mysql/udf_registration_types.h' file not found with angled".
+
 
 ### Configure MySQL at startup
 
@@ -176,15 +194,19 @@ Now we are ready to compile seiscomp3-macos with GUI manually from the builds di
 
 ```
 cd builds-seiscomp3-macos
-cmake -DCMAKE_INSTALL_PREFIX=${HOME}/seiscomp3 -DSC_GLOBAL_GUI=ON ../seiscomp3-macos-master
+cmake -DCMAKE_INSTALL_PREFIX=${HOME}/seiscomp3 -DSC_GLOBAL_GUI_QT5=ON ../seiscomp3-macos-master
 make -j 2
 make install
 ```
 
-Note: If you have installed Python versions with Homebrew and want to use this Python installation, rather than the System's default, then use cmake like this (e.g with python 2.7):
+For QT4, you need to pass `SC_GLOBAL_GUI=ON` rather than `SC_GLOBAL_GUI_QT5=ON`.
+
+Note: If you have some specific version of Python required that you would like to use, you can
+either adapt the CMakeLists.txt file to set the necessary paths accordingly or pass the variable
+`Python_VERSION_REQUIRED` to use with cmake, with the version number you would like to use:
 
 ```
-cmake -DCMAKE_INSTALL_PREFIX=${HOME}/seiscomp3 -DSC_GLOBAL_GUI=ON -DPYTHON_EXECUTABLE:FILEPATH=/usr/local/bin/python -DPYTHON_LIBRARY=/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib ../seiscomp3-macos-master`
+cmake -DCMAKE_INSTALL_PREFIX=${HOME}/seiscomp3 -DSC_GLOBAL_GUI_QT5=ON -DPython_VERSION_REQUIRED=[VERSION] ../seiscomp3-macos-master`
 ```
 
 If everything compiled fine, the files will be installed in ${HOME}/seiscomp3.
