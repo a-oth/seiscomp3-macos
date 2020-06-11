@@ -85,7 +85,7 @@ class base_comment(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_text() != value:
@@ -104,7 +104,7 @@ class base_comment(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_id() != value:
@@ -254,7 +254,7 @@ class base_qclog(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_creatorID() != value:
@@ -336,7 +336,7 @@ class base_qclog(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_message() != value:
@@ -421,7 +421,7 @@ class base_waveformquality(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_creatorID() != value:
@@ -504,7 +504,7 @@ class base_waveformquality(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_type() != value:
@@ -523,7 +523,7 @@ class base_waveformquality(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_parameter() != value:
@@ -663,7 +663,7 @@ class base_outage(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_creatorID() != value:
@@ -801,7 +801,7 @@ class base_qualitycontrol(object):
         list = []
         if dbQuery is None:
             if (self.obj.qCLogCount()):
-                for i in xrange(self.obj.qCLogCount()):
+                for i in range(self.obj.qCLogCount()):
                     obj = self.obj.qCLog(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_qclog(obj))
@@ -813,7 +813,7 @@ class base_qualitycontrol(object):
                     obj = DataModel.QCLog.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_qclog(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -859,7 +859,7 @@ class base_qualitycontrol(object):
         list = []
         if dbQuery is None:
             if (self.obj.waveformQualityCount()):
-                for i in xrange(self.obj.waveformQualityCount()):
+                for i in range(self.obj.waveformQualityCount()):
                     obj = self.obj.waveformQuality(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_waveformquality(obj))
@@ -882,7 +882,7 @@ class base_qualitycontrol(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_waveformquality(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _waveformQuality = property(__get_waveformquality)
@@ -915,7 +915,7 @@ class base_qualitycontrol(object):
         list = []
         if dbQuery is None:
             if (self.obj.outageCount()):
-                for i in xrange(self.obj.outageCount()):
+                for i in range(self.obj.outageCount()):
                     obj = self.obj.outage(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_outage(obj))
@@ -938,7 +938,7 @@ class base_qualitycontrol(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_outage(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _outage = property(__get_outage)
@@ -979,7 +979,7 @@ class base_stationreference(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_stationID() != value:
@@ -1044,7 +1044,7 @@ class base_stationgroup(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_code() != value:
@@ -1107,7 +1107,7 @@ class base_stationgroup(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -1170,7 +1170,7 @@ class base_stationgroup(object):
         list = []
         if dbQuery is None:
             if (self.obj.stationReferenceCount()):
-                for i in xrange(self.obj.stationReferenceCount()):
+                for i in range(self.obj.stationReferenceCount()):
                     obj = self.obj.stationReference(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_stationreference(obj))
@@ -1193,7 +1193,7 @@ class base_stationgroup(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_stationreference(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _stationReference = property(__get_stationreference)
@@ -1234,7 +1234,7 @@ class base_auxsource(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -1253,7 +1253,7 @@ class base_auxsource(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -1272,7 +1272,7 @@ class base_auxsource(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_unit() != value:
@@ -1291,7 +1291,7 @@ class base_auxsource(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_conversion() != value:
@@ -1339,7 +1339,7 @@ class base_auxsource(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -1392,7 +1392,7 @@ class base_auxdevice(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -1411,7 +1411,7 @@ class base_auxdevice(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -1430,7 +1430,7 @@ class base_auxdevice(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_model() != value:
@@ -1449,7 +1449,7 @@ class base_auxdevice(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_manufacturer() != value:
@@ -1473,7 +1473,7 @@ class base_auxdevice(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -1506,7 +1506,7 @@ class base_auxdevice(object):
         list = []
         if dbQuery is None:
             if (self.obj.auxSourceCount()):
-                for i in xrange(self.obj.auxSourceCount()):
+                for i in range(self.obj.auxSourceCount()):
                     obj = self.obj.auxSource(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_auxsource(obj))
@@ -1529,7 +1529,7 @@ class base_auxdevice(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_auxsource(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _auxSource = property(__get_auxsource)
@@ -1570,7 +1570,7 @@ class base_sensorcalibration(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_serialNumber() != value:
@@ -1676,7 +1676,7 @@ class base_sensorcalibration(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -1729,7 +1729,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -1748,7 +1748,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -1767,7 +1767,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_model() != value:
@@ -1786,7 +1786,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_manufacturer() != value:
@@ -1805,7 +1805,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_type() != value:
@@ -1824,7 +1824,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_unit() != value:
@@ -1871,7 +1871,7 @@ class base_sensor(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_response() != value:
@@ -1895,7 +1895,7 @@ class base_sensor(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -1932,7 +1932,7 @@ class base_sensor(object):
         list = []
         if dbQuery is None:
             if (self.obj.sensorCalibrationCount()):
-                for i in xrange(self.obj.sensorCalibrationCount()):
+                for i in range(self.obj.sensorCalibrationCount()):
                     obj = self.obj.sensorCalibration(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_sensorcalibration(obj))
@@ -1955,7 +1955,7 @@ class base_sensor(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_sensorcalibration(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _sensorCalibration = property(__get_sensorcalibration)
@@ -2005,7 +2005,7 @@ class base_responsepaz(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -2024,7 +2024,7 @@ class base_responsepaz(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_type() != value:
@@ -2158,7 +2158,7 @@ class base_responsepaz(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -2251,7 +2251,7 @@ class base_responsepolynomial(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -2298,7 +2298,7 @@ class base_responsepolynomial(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_frequencyUnit() != value:
@@ -2317,7 +2317,7 @@ class base_responsepolynomial(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_approximationType() != value:
@@ -2410,7 +2410,7 @@ class base_responsepolynomial(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -2463,7 +2463,7 @@ class base_responsefap(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -2542,7 +2542,7 @@ class base_responsefap(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -2595,7 +2595,7 @@ class base_responsefir(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -2694,7 +2694,7 @@ class base_responsefir(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_symmetry() != value:
@@ -2733,7 +2733,7 @@ class base_responsefir(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -2786,7 +2786,7 @@ class base_responseiir(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -2805,7 +2805,7 @@ class base_responseiir(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_type() != value:
@@ -2951,7 +2951,7 @@ class base_responseiir(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -2995,7 +2995,7 @@ class base_dataloggercalibration(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_serialNumber() != value:
@@ -3101,7 +3101,7 @@ class base_dataloggercalibration(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -3172,7 +3172,7 @@ class base_decimation(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_analogueFilterChain() != value:
@@ -3196,7 +3196,7 @@ class base_decimation(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_digitalFilterChain() != value:
@@ -3249,7 +3249,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_name() != value:
@@ -3268,7 +3268,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -3287,7 +3287,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_digitizerModel() != value:
@@ -3306,7 +3306,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_digitizerManufacturer() != value:
@@ -3325,7 +3325,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_recorderModel() != value:
@@ -3344,7 +3344,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_recorderManufacturer() != value:
@@ -3363,7 +3363,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_clockModel() != value:
@@ -3382,7 +3382,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_clockManufacturer() != value:
@@ -3401,7 +3401,7 @@ class base_datalogger(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_clockType() != value:
@@ -3453,7 +3453,7 @@ class base_datalogger(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -3490,7 +3490,7 @@ class base_datalogger(object):
         list = []
         if dbQuery is None:
             if (self.obj.dataloggerCalibrationCount()):
-                for i in xrange(self.obj.dataloggerCalibrationCount()):
+                for i in range(self.obj.dataloggerCalibrationCount()):
                     obj = self.obj.dataloggerCalibration(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_dataloggercalibration(obj))
@@ -3513,7 +3513,7 @@ class base_datalogger(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_dataloggercalibration(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _dataloggerCalibration = property(__get_dataloggercalibration)
@@ -3536,7 +3536,7 @@ class base_datalogger(object):
         list = []
         if dbQuery is None:
             if (self.obj.decimationCount()):
-                for i in xrange(self.obj.decimationCount()):
+                for i in range(self.obj.decimationCount()):
                     obj = self.obj.decimation(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_decimation(obj))
@@ -3559,7 +3559,7 @@ class base_datalogger(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_decimation(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _decimation = property(__get_decimation)
@@ -3600,7 +3600,7 @@ class base_auxstream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_code() != value:
@@ -3662,7 +3662,7 @@ class base_auxstream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_device() != value:
@@ -3681,7 +3681,7 @@ class base_auxstream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_deviceSerialNumber() != value:
@@ -3700,7 +3700,7 @@ class base_auxstream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_source() != value:
@@ -3719,7 +3719,7 @@ class base_auxstream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_format() != value:
@@ -3738,7 +3738,7 @@ class base_auxstream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_flags() != value:
@@ -3819,7 +3819,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_code() != value:
@@ -3881,7 +3881,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_datalogger() != value:
@@ -3900,7 +3900,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_dataloggerSerialNumber() != value:
@@ -3931,7 +3931,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_sensor() != value:
@@ -3950,7 +3950,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_sensorSerialNumber() != value:
@@ -3981,7 +3981,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_clockSerialNumber() != value:
@@ -4094,7 +4094,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_gainUnit() != value:
@@ -4113,7 +4113,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_format() != value:
@@ -4132,7 +4132,7 @@ class base_stream(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_flags() != value:
@@ -4197,7 +4197,7 @@ class base_stream(object):
         list = []
         if dbQuery is None:
             if (self.obj.commentCount()):
-                for i in xrange(self.obj.commentCount()):
+                for i in range(self.obj.commentCount()):
                     obj = self.obj.comment(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_comment(obj))
@@ -4220,7 +4220,7 @@ class base_stream(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_comment(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _comment = property(__get_comment)
@@ -4270,7 +4270,7 @@ class base_sensorlocation(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_code() != value:
@@ -4392,7 +4392,7 @@ class base_sensorlocation(object):
         list = []
         if dbQuery is None:
             if (self.obj.commentCount()):
-                for i in xrange(self.obj.commentCount()):
+                for i in range(self.obj.commentCount()):
                     obj = self.obj.comment(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_comment(obj))
@@ -4415,7 +4415,7 @@ class base_sensorlocation(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_comment(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _comment = property(__get_comment)
@@ -4454,7 +4454,7 @@ class base_sensorlocation(object):
         list = []
         if dbQuery is None:
             if (self.obj.auxStreamCount()):
-                for i in xrange(self.obj.auxStreamCount()):
+                for i in range(self.obj.auxStreamCount()):
                     obj = self.obj.auxStream(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_auxstream(obj))
@@ -4477,7 +4477,7 @@ class base_sensorlocation(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_auxstream(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _auxStream = property(__get_auxstream)
@@ -4542,7 +4542,7 @@ class base_sensorlocation(object):
         list = []
         if dbQuery is None:
             if (self.obj.streamCount()):
-                for i in xrange(self.obj.streamCount()):
+                for i in range(self.obj.streamCount()):
                     obj = self.obj.stream(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_stream(obj))
@@ -4554,7 +4554,7 @@ class base_sensorlocation(object):
                     obj = DataModel.Stream.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_stream(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -4605,7 +4605,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_code() != value:
@@ -4667,7 +4667,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -4728,7 +4728,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_place() != value:
@@ -4747,7 +4747,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_country() != value:
@@ -4766,7 +4766,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_affiliation() != value:
@@ -4785,7 +4785,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_type() != value:
@@ -4804,7 +4804,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_archive() != value:
@@ -4823,7 +4823,7 @@ class base_station(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_archiveNetworkCode() != value:
@@ -4875,7 +4875,7 @@ class base_station(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -4912,7 +4912,7 @@ class base_station(object):
         list = []
         if dbQuery is None:
             if (self.obj.commentCount()):
-                for i in xrange(self.obj.commentCount()):
+                for i in range(self.obj.commentCount()):
                     obj = self.obj.comment(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_comment(obj))
@@ -4935,7 +4935,7 @@ class base_station(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_comment(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _comment = property(__get_comment)
@@ -4968,7 +4968,7 @@ class base_station(object):
         list = []
         if dbQuery is None:
             if (self.obj.sensorLocationCount()):
-                for i in xrange(self.obj.sensorLocationCount()):
+                for i in range(self.obj.sensorLocationCount()):
                     obj = self.obj.sensorLocation(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_sensorlocation(obj))
@@ -4980,7 +4980,7 @@ class base_station(object):
                     obj = DataModel.SensorLocation.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_sensorlocation(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5031,7 +5031,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_code() != value:
@@ -5093,7 +5093,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_description() != value:
@@ -5112,7 +5112,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_institutions() != value:
@@ -5131,7 +5131,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_region() != value:
@@ -5150,7 +5150,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_type() != value:
@@ -5169,7 +5169,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_netClass() != value:
@@ -5188,7 +5188,7 @@ class base_network(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_archive() != value:
@@ -5240,7 +5240,7 @@ class base_network(object):
             blob = DataModel.Blob()
             if value:
                 blob.setContent(value)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_remark() != value:
@@ -5277,7 +5277,7 @@ class base_network(object):
         list = []
         if dbQuery is None:
             if (self.obj.commentCount()):
-                for i in xrange(self.obj.commentCount()):
+                for i in range(self.obj.commentCount()):
                     obj = self.obj.comment(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_comment(obj))
@@ -5300,7 +5300,7 @@ class base_network(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_comment(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _comment = property(__get_comment)
@@ -5353,7 +5353,7 @@ class base_network(object):
         list = []
         if dbQuery is None:
             if (self.obj.stationCount()):
-                for i in xrange(self.obj.stationCount()):
+                for i in range(self.obj.stationCount()):
                     obj = self.obj.station(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_station(obj))
@@ -5365,7 +5365,7 @@ class base_network(object):
                     obj = DataModel.Station.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_station(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5441,7 +5441,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.stationGroupCount()):
-                for i in xrange(self.obj.stationGroupCount()):
+                for i in range(self.obj.stationGroupCount()):
                     obj = self.obj.stationGroup(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_stationgroup(obj))
@@ -5453,7 +5453,7 @@ class base_inventory(object):
                     obj = DataModel.StationGroup.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_stationgroup(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5481,7 +5481,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.auxDeviceCount()):
-                for i in xrange(self.obj.auxDeviceCount()):
+                for i in range(self.obj.auxDeviceCount()):
                     obj = self.obj.auxDevice(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_auxdevice(obj))
@@ -5493,7 +5493,7 @@ class base_inventory(object):
                     obj = DataModel.AuxDevice.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_auxdevice(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5531,7 +5531,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.sensorCount()):
-                for i in xrange(self.obj.sensorCount()):
+                for i in range(self.obj.sensorCount()):
                     obj = self.obj.sensor(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_sensor(obj))
@@ -5543,7 +5543,7 @@ class base_inventory(object):
                     obj = DataModel.Sensor.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_sensor(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5585,7 +5585,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.dataloggerCount()):
-                for i in xrange(self.obj.dataloggerCount()):
+                for i in range(self.obj.dataloggerCount()):
                     obj = self.obj.datalogger(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_datalogger(obj))
@@ -5597,7 +5597,7 @@ class base_inventory(object):
                     obj = DataModel.Datalogger.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_datalogger(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5643,7 +5643,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.responsePAZCount()):
-                for i in xrange(self.obj.responsePAZCount()):
+                for i in range(self.obj.responsePAZCount()):
                     obj = self.obj.responsePAZ(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_responsepaz(obj))
@@ -5655,7 +5655,7 @@ class base_inventory(object):
                     obj = DataModel.ResponsePAZ.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_responsepaz(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5693,7 +5693,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.responseFIRCount()):
-                for i in xrange(self.obj.responseFIRCount()):
+                for i in range(self.obj.responseFIRCount()):
                     obj = self.obj.responseFIR(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_responsefir(obj))
@@ -5705,7 +5705,7 @@ class base_inventory(object):
                     obj = DataModel.ResponseFIR.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_responsefir(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5747,7 +5747,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.responseIIRCount()):
-                for i in xrange(self.obj.responseIIRCount()):
+                for i in range(self.obj.responseIIRCount()):
                     obj = self.obj.responseIIR(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_responseiir(obj))
@@ -5759,7 +5759,7 @@ class base_inventory(object):
                     obj = DataModel.ResponseIIR.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_responseiir(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5799,7 +5799,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.responsePolynomialCount()):
-                for i in xrange(self.obj.responsePolynomialCount()):
+                for i in range(self.obj.responsePolynomialCount()):
                     obj = self.obj.responsePolynomial(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_responsepolynomial(obj))
@@ -5811,7 +5811,7 @@ class base_inventory(object):
                     obj = DataModel.ResponsePolynomial.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_responsepolynomial(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5841,7 +5841,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.responseFAPCount()):
-                for i in xrange(self.obj.responseFAPCount()):
+                for i in range(self.obj.responseFAPCount()):
                     obj = self.obj.responseFAP(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_responsefap(obj))
@@ -5853,7 +5853,7 @@ class base_inventory(object):
                     obj = DataModel.ResponseFAP.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_responsefap(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5899,7 +5899,7 @@ class base_inventory(object):
         list = []
         if dbQuery is None:
             if (self.obj.networkCount()):
-                for i in xrange(self.obj.networkCount()):
+                for i in range(self.obj.networkCount()):
                     obj = self.obj.network(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_network(obj))
@@ -5911,7 +5911,7 @@ class base_inventory(object):
                     obj = DataModel.Network.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_network(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -5953,7 +5953,7 @@ class base_routearclink(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_address() != value:
@@ -6052,7 +6052,7 @@ class base_routeseedlink(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_address() != value:
@@ -6117,7 +6117,7 @@ class base_route(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_networkCode() != value:
@@ -6136,7 +6136,7 @@ class base_route(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_stationCode() != value:
@@ -6155,7 +6155,7 @@ class base_route(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_locationCode() != value:
@@ -6174,7 +6174,7 @@ class base_route(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_streamCode() != value:
@@ -6205,7 +6205,7 @@ class base_route(object):
         list = []
         if dbQuery is None:
             if (self.obj.routeArclinkCount()):
-                for i in xrange(self.obj.routeArclinkCount()):
+                for i in range(self.obj.routeArclinkCount()):
                     obj = self.obj.routeArclink(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_routearclink(obj))
@@ -6228,7 +6228,7 @@ class base_route(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_routearclink(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _routeArclink = property(__get_routearclink)
@@ -6247,7 +6247,7 @@ class base_route(object):
         list = []
         if dbQuery is None:
             if (self.obj.routeSeedlinkCount()):
-                for i in xrange(self.obj.routeSeedlinkCount()):
+                for i in range(self.obj.routeSeedlinkCount()):
                     obj = self.obj.routeSeedlink(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_routeseedlink(obj))
@@ -6270,7 +6270,7 @@ class base_route(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_routeseedlink(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _routeSeedlink = property(__get_routeseedlink)
@@ -6311,7 +6311,7 @@ class base_access(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_networkCode() != value:
@@ -6330,7 +6330,7 @@ class base_access(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_stationCode() != value:
@@ -6349,7 +6349,7 @@ class base_access(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_locationCode() != value:
@@ -6368,7 +6368,7 @@ class base_access(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_streamCode() != value:
@@ -6387,7 +6387,7 @@ class base_access(object):
                 value = arg.encode("utf-8", "replace")
             else:
                 value = str(arg)
-        except Exception, e:
+        except Exception as e:
             logs.error(str(e))
             return
         if self.__get_user() != value:
@@ -6492,7 +6492,7 @@ class base_routing(object):
         list = []
         if dbQuery is None:
             if (self.obj.routeCount()):
-                for i in xrange(self.obj.routeCount()):
+                for i in range(self.obj.routeCount()):
                     obj = self.obj.route(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_route(obj))
@@ -6504,7 +6504,7 @@ class base_routing(object):
                     obj = DataModel.Route.Cast(it.get())
                     obj.lastModified = it.lastModified()
                     list.append(base_route(obj))
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
                 it.step()
         return list
@@ -6538,7 +6538,7 @@ class base_routing(object):
         list = []
         if dbQuery is None:
             if (self.obj.accessCount()):
-                for i in xrange(self.obj.accessCount()):
+                for i in range(self.obj.accessCount()):
                     obj = self.obj.access(i)
                     obj.lastModified = Core.Time.GMT()
                     list.append(base_access(obj))
@@ -6561,7 +6561,7 @@ class base_routing(object):
                         except:
                             logs.debug("got " + repr(obj) + " in __get_access(), objects_left=" + str(objects_left))
                     i += 1
-                except ValueError, e:
+                except ValueError as e:
                     print(str(e))
         return list
     _access = property(__get_access)
