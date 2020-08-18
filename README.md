@@ -99,9 +99,15 @@ Install Boost:
 brew install boost
 ```
 
-You can also use Boost@1.60 (as we did previously due to compilation issues that are now
-solved), but then you have to adapt the FindBoost.cmake file in Modules to find boost@1.60
-for the MACOSX case.
+Currently there are compilation issues with boost version 1.73. Version 1.72 works fine.
+We therefore included the possibility to pass a version variable `BOOST_VERSION_REQUIRED`
+with cmake in case the user has installed a specific boost version as boost@version.
+Please note that seiscomp3 compiles fine using the easily available version boost@1.60.
+We used the `brew extract` command to extract version 1.72 of boost into a private tap
+of ours and then installed boost@1.72. Note that you should in that case not forget to
+link boost@1.72 so that the link /usr/local/opt/boost@1.72 exists, since cmake is looking
+for that.
+
 
 ### Install Qt5 for the GUI
 
