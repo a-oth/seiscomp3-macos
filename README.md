@@ -136,8 +136,8 @@ mysql@5.7, that should also work fine.
 brew install mysql
 ```
 
-Note: for compilation with MySQL 8, you might need the following line in the file 
-usr/local/Cellar/mysql/8.[VERSION]/include/mysql/mysql_com.h:
+Note: for compilation with MySQL 8, you might possibly need to change the following line
+in the file usr/local/Cellar/mysql/8.[VERSION]/include/mysql/mysql_com.h:
 
 ```
 #include <mysql/udf_registration_types.h>
@@ -149,7 +149,8 @@ to
 #include "mysql/udf_registration_types.h"
 ```
 
-since otherwise you get compilation issues "mysql/udf_registration_types.h' file not found with angled".
+since otherwise you get compilation issues "mysql/udf_registration_types.h' file not found
+with angled".
 
 
 ### Configure MySQL at startup
@@ -223,7 +224,7 @@ ${HOME}/seiscomp3/bin/scrttv
 ```
 
  
-### Increase max open files for seedlink on macOS System Startup
+### Increase max open files for seedlink on macOS system startup
 
 To avoid getting seedlink errors when starting seiscomp3 with "files open exceed max files ...",
 increase the max open files on system's startup.
@@ -261,6 +262,16 @@ Then set root:wheel permission with command:
 
 Launch it with command:
 `sudo launchctl load -w /Library/LaunchDaemons/limit.seiscomp3-maxfiles.plist`
+
+### A note on the GUIs for macOS
+
+On macOS, you may need to deactivate the App Nap functionality for the GUIs to operate
+without crashes. This problem was noted with SeisComP version 4, but may in some way or
+the other also apply to SeisComP3, even though the master is based on spread and thus
+significantly different. To do that easily systemwide, you can use the OnyX
+software (tested with version 3.8.5 on macOS Catalina) to easily do that (tab Parameters
+--> Misc --> Turn off App Nap). Alternatively, you can do that via the command line or
+check out to deactivate App Nap for individual apps.
 
 ### Check current seiscomp3 configuration
 https://docs.gempa.de/seiscomp3/current/apps/global.html
