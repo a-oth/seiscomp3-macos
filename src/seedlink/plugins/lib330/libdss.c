@@ -55,6 +55,11 @@ Edit History:
 #include "libsupport.h"
 #endif
 
+// Include proper header file for avoiding implicit function declaration of close
+// A. Oth, 2020-09-24 for compilation on macOS with XCode 12
+#include <unistd.h>
+#include <fcntl.h> 
+
 #define RPT_CLIENTS 1 /* verbosity >= shows new clients */
 #define RPT_REPORTS 2 /* shows reports */
 #define RPT_ALLOC 3 /* show memory allocations */

@@ -54,6 +54,11 @@ Edit History:
 #include "libstrucs.h"
 #endif
 
+// Include proper header file for avoiding implicit function declaration of close
+// A. Oth, 2020-09-24 for compilation on macOS with XCode 12
+#include <unistd.h>
+#include <fcntl.h> 
+
 typedef struct {
 #ifdef X86_WIN32
   HANDLE mutex ;

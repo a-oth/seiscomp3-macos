@@ -57,6 +57,11 @@ Edit History:
 #include "libstrucs.h"
 #endif
 
+// Include proper header file for avoiding implicit function declaration of close
+// A. Oth, 2020-09-24 for compilation on macOS with XCode 12
+#include <unistd.h>
+#include <fcntl.h> 
+
 #define C2_POC 0xC5 /* Point of Contact */
 
 typedef struct {

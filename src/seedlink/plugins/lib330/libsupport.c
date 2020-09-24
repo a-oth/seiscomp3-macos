@@ -44,6 +44,11 @@ Edit History:
 #include <arpa/inet.h>
 #endif
 
+// Include proper header file for avoiding implicit function declaration of close
+// A. Oth, 2020-09-24 for compilation on macOS with XCode 12
+#include <unistd.h>
+#include <fcntl.h> 
+
 const dms_type days_mth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} ;
 
 typedef pointer *pptr ;
