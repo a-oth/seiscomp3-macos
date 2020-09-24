@@ -8,6 +8,11 @@
 
 /* Assigns epochal time & other unfilled fields */
 
+// Function declarations to avoid implicit function errors when compiling
+// A. Oth, 2020-09-23 to compile on macOS with XCode 12
+int mdtodate();
+int htoe();
+
 struct date_time{
 	double epoch;
 	long date;

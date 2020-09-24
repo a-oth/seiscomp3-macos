@@ -7,6 +7,14 @@ static	char	SccsId[] = "@(#)htoe.c	44.1	9/23/91";
 #endif
 
 #include "csstime.h"
+
+// Function declarations to avoid implicit function errors when compiling
+// A. Oth, 2020-09-23 to compile on macOS with XCode 12
+// void etoh(struct date_time);
+// int isleap(int year);
+void etoh();
+int isleap();
+
 static int days_in_month[] = {31,28,31,30,31,30,31,31,30,31,30,31,31};
 
 int htoe(register struct date_time *dt) {

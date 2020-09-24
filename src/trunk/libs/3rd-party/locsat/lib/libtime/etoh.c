@@ -8,6 +8,12 @@ static char *month_name[] =
 {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
 #define mod(a,b)	a - ((int)(a/b)) * b
+
+// Function declarations to avoid implicit function errors when compiling
+// A. Oth, 2020-09-23 to compile on macOS with XCode 12
+// int isleap(int year); */
+int isleap();
+
 void month_day(dt)
 register struct date_time *dt;
 {

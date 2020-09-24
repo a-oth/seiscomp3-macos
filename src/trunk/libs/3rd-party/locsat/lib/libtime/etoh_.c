@@ -13,6 +13,11 @@
 
 #include "csstime.h"
 
+// Function declarations to avoid implicit function errors when compiling
+// A. Oth, 2020-09-23 to compile on macOS with XCode 12
+// void etoh(struct date_time);
+void etoh();
+
 void etoh_(double *epoch, long *date,
            int *year, int *month, char mname[4],
            int *day, int *doy, int *hour, int *minute, float *second) {

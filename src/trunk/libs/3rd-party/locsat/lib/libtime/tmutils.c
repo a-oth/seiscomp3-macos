@@ -5,6 +5,11 @@
 /* collection of time conversion utility subroutines */
 #include <ctype.h>
 #include <time.h>
+
+// Function declarations to avoid implicit function errors when compiling
+// A. Oth, 2020-09-23 to compile on macOS with XCode 12
+int isleap();
+
 	/* convert julian date to epoch time */
 double
 dtoepoch(date)
